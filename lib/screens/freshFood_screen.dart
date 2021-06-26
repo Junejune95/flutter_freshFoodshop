@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freshFoodShopbyFlutter/models/FreshFood.dart';
+import 'package:freshFoodShopbyFlutter/screens/shop_screen.dart';
 
 class FreshFoodScreen extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class _FreshFoodScreenState extends State<FreshFoodScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   PageController _pageController;
+  int _selectedPage = 0;
   @override
   void initState() {
     super.initState();
@@ -99,11 +101,45 @@ class _FreshFoodScreenState extends State<FreshFoodScreen>
             height: 500.0,
             width: double.infinity,
             child: PageView.builder(
+              onPageChanged: (int index) {
+                setState(() {
+                  _selectedPage = index;
+                });
+              },
               controller: _pageController,
               itemCount: freshFood.length,
               itemBuilder: (BuildContext context, int index) {
                 return _freshFoodSelector(index);
               },
+            ),
+          ),
+          Container(
+            height: 400,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Description',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    freshFood[_selectedPage].description,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],
@@ -129,7 +165,16 @@ class _FreshFoodScreenState extends State<FreshFoodScreen>
         );
       },
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ShopScreen(
+                freshfood: freshFood[index],
+              ),
+            ),
+          );
+        },
         child: Stack(
           alignment: Alignment.center,
           children: [
