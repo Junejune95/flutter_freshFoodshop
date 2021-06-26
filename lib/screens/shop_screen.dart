@@ -114,7 +114,7 @@ class ShopScreen extends StatelessWidget {
                       child: Image(
                         height: 240.0,
                         width: 240.0,
-                        image: NetworkImage(freshfood.imageUrl),
+                        image: AssetImage(freshfood.imageUrl),
                         fit: BoxFit.contain,
                       ),
                     ),

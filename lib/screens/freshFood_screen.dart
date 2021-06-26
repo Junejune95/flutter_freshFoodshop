@@ -193,7 +193,7 @@ class _FreshFoodScreenState extends State<FreshFoodScreen>
                         height: 280.0,
                         width: 280.0,
                         fit: BoxFit.contain,
-                        image: NetworkImage(freshFood[index].imageUrl),
+                        image: AssetImage(freshFood[index].imageUrl),
                       ),
                     ),
                   ),

@@ -1,7 +1,7 @@
 # freshFoodShopbyFlutter
 
 A new Flutter project.
-
+<img src="assets/result.gif" width="500"> <br />
 ## Getting Started
 
 This project is a starting point for a Flutter application.
